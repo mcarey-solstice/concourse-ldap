@@ -1,0 +1,5 @@
+---
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/start_tls?
+  value: ((ldap_auth.start_tls))
+

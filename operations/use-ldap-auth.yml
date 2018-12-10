@@ -1,0 +1,56 @@
+---
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth
+  value: {}
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/host?
+  value: ((ldap_auth.host))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/bind_dn?
+  value: ((ldap_auth.bind_dn))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/bind_pw?
+  value: ((ldap_auth.bind_pw))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/ca_cert?
+  value: ((ldap_auth.ca_cert))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/user_search_base_dn?
+  value: ((ldap_auth.user_search_base_dn))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/user_search_filter?
+  value: ((ldap_auth.user_search_filter))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/user_search_username?
+  value: ((ldap_auth.user_search_username))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/user_search_name_attr?
+  value: ((ldap_auth.user_search_name_attr))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/group_search_base_dn?
+  value: ((ldap_auth.group_search_base_dn))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/group_search_filter?
+  value: ((ldap_auth.group_search_filter))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/group_search_user_attr?
+  value: ((ldap_auth.group_search_user_attr))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/group_search_group_attr?
+  value: ((ldap_auth.group_search_group_attr))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/group_search_name_attr?
+  value: ((ldap_auth.group_search_name_attr))
+

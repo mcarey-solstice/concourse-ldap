@@ -1,0 +1,5 @@
+---
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/user_search_email_attr?
+  value: ((ldap_auth.user_search_email_attr))
+

@@ -1,0 +1,12 @@
+---
+- type: remove
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/ca_cert
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/insecure_no_ssl?
+  value: true
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/insecure_skip_verify?
+  value: true
+
