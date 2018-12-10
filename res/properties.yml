@@ -1,0 +1,25 @@
+---
+ldap_auth:
+  required:
+    - host
+    - bind_dn
+    - bind_pw
+    - ca_cert
+    - user_search_base_dn
+    - user_search_filter
+    - user_search_username
+    - user_search_name_attr
+    - group_search_base_dn
+    - group_search_filter
+    - group_search_user_attr
+    - group_search_group_attr
+    - group_search_name_attr
+  optional:
+    - user_search_scope
+    - user_search_id_attr
+    - user_search_email_attr
+    - group_search_scope
+    - start_tls
+  no_ssl:
+    - insecure_no_ssl
+    - insecure_skip_verify

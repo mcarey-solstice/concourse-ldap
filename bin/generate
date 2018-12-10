@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+{
+  echo "---"
+  echo -e "- type: replace\n  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth\n  value: {}"
+  while read var; do
+    echo -e "- type: replace\n  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/$var?\n  value: ((ldap_auth.$var))\n"
+  done < <( cat res/properties.yml | yq -rc .ldap_auth.required[] )
+} > operations/use-ldap-auth.yml
+
+while read var; do
+  {
+    echo "---"
+    echo -e "- type: replace\n  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/$var?\n  value: ((ldap_auth.$var))\n"
+  } > operations/set-ldap-${var/_/-}.yml
+done < <( cat res/properties.yml | yq -rc .ldap_auth.optional[] )
+
+{
+  echo "---"
+  echo -e "- type: remove\n  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/ca_cert\n"
+  while read var; do
+    echo -e "- type: replace\n  path: /instance_groups/name=web/jobs/name=atc/properties/ldap_auth/$var?\n  value: true\n"
+  done < <( cat res/properties.yml | yq -rc .ldap_auth.no_ssl[] )
+} > operations/remove-ldap-ssl.yml
+
+# ./bin/generate
